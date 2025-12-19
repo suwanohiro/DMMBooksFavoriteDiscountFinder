@@ -4,10 +4,63 @@
         <div id="swn-close">×</div>
     </header>
     <div id="swn-main">
-        <div class="content">
-            <h3>割引下限値</h3>
-            <span id="swn-percent-min-txt">50</span>
-            <input type="range" id="swn-percent-min" min="0" max="100" value="50">
+        <div class="swn-content-title">
+            <input type="checkbox" id="swn-percent-enabled" checked>
+            <h2>割引％</h2>
+        </div>
+        <hr>
+        <div class="swn-class-parent">
+            <div class="swn-content">
+                <h3>割引％&emsp;下限値</h3>
+                <div class="swn-range">
+                    <span id="swn-percent-min-txt" class="swn-range-txt">50</span>
+                    <input type="range" id="swn-percent-min" min="0" max="100" value="50" step="5">
+                    <label>
+                        <input type="checkbox" id="swn-percent-min-include" checked>
+                        <span>含む</span>
+                    </label>
+                </div>
+            </div>
+            <div class="swn-content">
+                <h3>割引％&emsp;上限値</h3>
+                <div class="swn-range">
+                    <span id="swn-percent-max-txt" class="swn-range-txt">100</span>
+                    <input type="range" id="swn-percent-max" min="0" max="100" value="100" step="5">
+                    <label>
+                        <input type="checkbox" id="swn-percent-max-include" checked>
+                        <span>含む</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="swn-content-title">
+            <input type="checkbox" id="swn-return-enabled" checked>
+            <h2>還元％</h2>
+        </div>
+        <hr>
+        <div class="swn-content-parent">
+            <div class="swn-content">
+                <h3>還元％&emsp;下限値</h3>
+                <div class="swn-range">
+                    <span id="swn-return-min-txt" class="swn-range-txt">50</span>
+                    <input type="range" id="swn-return-min" min="0" max="100" value="50" step="5">
+                    <label>
+                        <input type="checkbox" id="swn-return-min-include" checked>
+                        <span>含む</span>
+                    </label>
+                </div>
+            </div>
+            <div class="swn-content">
+                <h3>還元％&emsp;上限値</h3>
+                <div class="swn-range">
+                    <span id="swn-return-max-txt" class="swn-range-txt">100</span>
+                    <input type="range" id="swn-return-max" min="0" max="100" value="100" step="5">
+                    <label>
+                        <input type="checkbox" id="swn-return-max-include" checked>
+                        <span>含む</span>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </div>
