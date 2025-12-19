@@ -1,0 +1,2 @@
+# DMMBooksFavoriteDiscountFinder
+DMM Booksのお気に入りページで、指定した割引率以上の商品を強調表示するブックマークレット
