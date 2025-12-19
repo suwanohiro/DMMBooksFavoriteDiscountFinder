@@ -3,7 +3,7 @@ import insertHTML from "./src/js/module/insertHTML/insertHTML.js";
 import RunMode from "./src/js/mode.js";
 
 export async function main() {
-    RunMode.mode = RunMode.develop;
+    RunMode.initialize(RunMode.develop);
     const swnPopup = document.getElementsByClassName("swn-popup");
     if (swnPopup.length > 0) return;
 
