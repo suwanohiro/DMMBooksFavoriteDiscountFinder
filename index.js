@@ -3,7 +3,15 @@ import insertHTML from "./src/js/module/insertHTML/insertHTML.js";
 import RunMode from "./src/js/mode.js";
 
 export async function main() {
+    const rootClassName = "swn-popup";
     RunMode.mode = RunMode.develop;
-    const insertHTMLData = new InsertHTMLData("./src/gui/MainMenu/index.html", "./src/gui/MainMenu/css/style.css");
-    await insertHTML(insertHTMLData);
+    const insertHTMLData = new InsertHTMLData(
+        rootClassName,
+        "./src/gui/MainMenu/index.html",
+        "./src/gui/MainMenu/css/style.css",
+        "./src/gui/MainMenu/js/script.js"
+    );
+    const swnPopup = document.getElementsByClassName(rootClassName);
+    if (swnPopup.length > 0) return;
+    await insertHTML(insertHTMLData, rootClassName);
 }

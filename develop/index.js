@@ -1,6 +1,8 @@
 import { main } from "../index.js";
+import RunMode from "../src/js/mode.js";
 
-window.onload = async () => {
+window.addEventListener("DOMContentLoaded", async () => {
     const run = document.getElementById("run");
-    run.onclick = async () => { await main(); };
-}
+    run.addEventListener("click", async () => { await main(); });
+    if (RunMode.mode === RunMode.develop) { run.click(); }
+});

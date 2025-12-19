@@ -7,7 +7,6 @@ import RunMode from "../mode.js";
  */
 export default function convertURL(url) {
     if (RunMode.mode === RunMode.develop) {
-        console.log(`url: http://localhost:${location.port}/${url}`);
         return `http://localhost:${location.port}/${url}`;
     } else if (RunMode.mode === RunMode.release) {
         return `https://suwanohiro.github.io/DMMBooksFavoriteDiscountFinder/${url}`;
