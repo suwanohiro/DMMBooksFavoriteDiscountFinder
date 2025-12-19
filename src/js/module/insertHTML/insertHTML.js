@@ -42,11 +42,14 @@ async function createHTMLElement(html, rootClassName = "swn-popup") {
     try {
         const response = await fetch(convertURL(html));
         const data = await response.text();
+        const base = document.createElement("div");
+        base.classList.add(`${rootClassName}-base`);
         const container = document.createElement("div");
         container.classList.add(rootClassName);
         container.classList.add(`${rootClassName}-html`);
         container.innerHTML = data.trim();
-        return container;
+        base.appendChild(container);
+        return base;
     } catch (err) {
         console.error("createHTMLElement fetch failed:", err);
         return null;
