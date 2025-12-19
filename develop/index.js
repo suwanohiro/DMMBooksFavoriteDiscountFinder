@@ -1,6 +1,6 @@
 import { main } from "../index.js";
 
-window.onload = () => {
+window.onload = async () => {
     const run = document.getElementById("run");
-    run.onclick = () => { main(); };
+    run.onclick = async () => { await main(); };
 }
