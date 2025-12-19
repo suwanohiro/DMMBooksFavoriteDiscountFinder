@@ -20,12 +20,18 @@ function main() {
         elem.addEventListener("input", () => {
             const titleDiv = elem.closest('.swn-content-title');
             const parentElem = titleDiv.nextElementSibling.nextElementSibling;
-            const parentResetButton = parentElem.querySelector('.swn-content-value-reset');
+            const parentResetButton = parentElem.previousElementSibling.previousElementSibling.getElementsByClassName('swn-content-value-reset')[0];
             parentResetButton.disabled = !elem.checked;
             if (elem.checked) {
                 parentElem.classList.remove("swn-disabled");
+                parentResetButton.classList.remove("swn-disabled");
+                parentElem.classList.add("swn-enabled");
+                parentResetButton.classList.add("swn-enabled");
             } else {
                 parentElem.classList.add("swn-disabled");
+                parentResetButton.classList.add("swn-disabled");
+                parentElem.classList.remove("swn-enabled");
+                parentResetButton.classList.remove("swn-enabled");
             }
         });
     });
@@ -35,7 +41,7 @@ function resetValues() {
     const resetButtons = document.getElementsByClassName("swn-content-value-reset");
     Array.from(resetButtons).forEach(button => {
         // minとmaxの要素を取得
-        const parentElem = button.parentElement;
+        const parentElem = button.closest('.swn-content-title').nextElementSibling.nextElementSibling;
         const rangeInputs = parentElem.getElementsByTagName("input");
         const minInput = Array.from(rangeInputs).find(input => input.type === "range" && input.id.endsWith("min"));
         const maxInput = Array.from(rangeInputs).find(input => input.type === "range" && input.id.endsWith("max"));

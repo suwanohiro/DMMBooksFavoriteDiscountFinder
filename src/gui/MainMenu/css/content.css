@@ -34,12 +34,20 @@
     filter: brightness(0.6);
     pointer-events: none;
     opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.swn-content-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .swn-content-title label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-wrap: nowrap;
 }
 
 .swn-content {
@@ -78,22 +86,23 @@
 }
 
 .swn-content-value-reset {
-    flex-basis: 100%;
-    display: block;
-    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    padding-block: 0.25rem;
     background-color: var(--color-button-bg);
     border: 0;
     border-radius: var(--borderRadius);
     color: white;
     font-weight: bold;
     cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
 }
 
-.swn-content-value-reset:hover {
+.swn-content-value-reset.swn-enabled:hover {
     background-color: hsl(210, 100%, 45%);
 }
 
-.swn-content-value-reset:active {
+.swn-content-value-reset.swn-enabled:active {
     background-color: hsl(210, 100%, 35%);
     transform: scale(0.99);
 }
