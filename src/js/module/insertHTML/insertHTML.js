@@ -1,14 +1,16 @@
 import InsertHTMLData from "./insertHTMLData.js";
 import convertURL from "../convertURL.js";
 
-export default async function insertHTML(insertHTMLData, rootClassName = "swn-popup") {
+export default async function insertHTML(insertHTMLData) {
     const hasHTML = insertHTMLData.HTML !== "";
     const hasCSS = insertHTMLData.CSS !== "";
     const hasJS = insertHTMLData.JS !== "";
+    const targetElement = insertHTMLData.AddHTMLTargetElement || document.body;
+    const rootClassName = insertHTMLData.rootClassName || "swn-popup";
 
     // どちらもない場合は何もしない（HTML があれば挿入）
     if (!hasCSS && !hasJS) {
-        if (hasHTML) await insertHTMLElement(insertHTMLData.HTML, rootClassName);
+        if (hasHTML) await insertHTMLElement(insertHTMLData.HTML, rootClassName, targetElement);
         return;
     }
 
@@ -17,7 +19,7 @@ export default async function insertHTML(insertHTMLData, rootClassName = "swn-po
     }
 
     if (hasHTML) {
-        await insertHTMLElement(insertHTMLData.HTML, rootClassName);
+        await insertHTMLElement(insertHTMLData.HTML, rootClassName, targetElement);
     }
 
     if (hasJS) {
@@ -56,15 +58,15 @@ async function createHTMLElement(html, rootClassName = "swn-popup") {
     }
 }
 
-async function insertHTMLElement(html, rootClassName = "swn-popup", onload = undefined) {
+async function insertHTMLElement(html, rootClassName = "swn-popup", targetElement = document.body, onload = undefined) {
     const htmlElement = await createHTMLElement(html, rootClassName);
     if (!htmlElement) {
         if (onload) onload();
         return;
     }
 
-    // wrapper（rootClassName を付与した要素）自体を body に追加して CSS セレクタを維持
-    document.body.appendChild(htmlElement);
+    // wrapper（rootClassName を付与した要素）自体を指定された要素に追加して CSS セレクタを維持
+    targetElement.appendChild(htmlElement);
 
     if (onload) onload();
 }
