@@ -1,8 +1,8 @@
 import { main as view } from "../../../../index.js";
+import IDNames from "../../module/IDNames.js";
 
 function main() {
-    const className = "swn-view-button";
-    const button = document.getElementById(className);
+    const button = document.getElementById(IDNames.ViewButton);
     button.addEventListener("click", () => { view(); });
 }
 
